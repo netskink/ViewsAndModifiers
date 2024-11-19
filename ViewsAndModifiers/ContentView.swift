@@ -17,7 +17,7 @@ struct ContentView: View {
     let motto2 = Text("nunquam titillandus")
     
     var spells: some View {
-        VStack {
+        Group {
             Text( "Fireball")
             Text("Lightning Bolt")
             Text("Healing Potion")
