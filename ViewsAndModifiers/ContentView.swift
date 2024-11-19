@@ -11,19 +11,17 @@ struct ContentView: View {
     
     @State private var useRedText = false
     
+    var motto1: some View {
+        Text("Draco dormiens")
+    }
+    let motto2 = Text("nunquam titillandus")
+    
     var body: some View {
+        
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
-            
-            Button("Toggle Red Text") {
-                useRedText.toggle()
-            }
-            .foregroundStyle(useRedText ? .red: .blue)
+            motto1
+            motto2
         }
-        .font(.largeTitle)
         .padding()
     }
 }
