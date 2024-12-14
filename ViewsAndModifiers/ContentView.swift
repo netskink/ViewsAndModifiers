@@ -28,9 +28,9 @@ struct ContentView: View {
     var body: some View {
         
         let abutton = Button("display type 2") {}
-            .background(.red)
             .frame(width: 200, height: 200)
-        
+            .background(.red)
+
         print("Type of button2: \(type(of: abutton))")
         
         return  VStack {
