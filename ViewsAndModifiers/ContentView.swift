@@ -27,6 +27,9 @@ extension View {
 
 
 // a second custom modider
+// these have the benefit of
+// 1. easier to use
+// 2. can have properties such as text in this case
 struct Watermark: ViewModifier {
     var text: String
     
