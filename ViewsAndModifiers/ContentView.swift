@@ -26,24 +26,15 @@ struct ContentView: View {
     
     
     var body: some View {
-        
-        let abutton = Button("display type 2") {}
-            .frame(width: 200, height: 200)
-            .background(.red)
-
-        print("Type of button2: \(type(of: abutton))")
-        
-        return  VStack {
-            CapsuleText(text: "Hello, World!")
-            CapsuleText(text: "Hello, me!")
-            Button("display type") {
-                print(type(of: self.body))
-            }
-            .background(.red)
-            .frame(width: 200, height: 200)
-            abutton
-         } // vstack
+        Text("Hello World")
         .padding()
+        .background(Color.blue)
+        .padding()
+        .background(Color.green)
+        .padding()
+        .background(Color.yellow)
+        .padding()
+        .background(Color.red)
     }
 }
 
