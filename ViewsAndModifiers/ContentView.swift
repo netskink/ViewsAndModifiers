@@ -19,6 +19,13 @@ struct Title: ViewModifier {
     }
 }
 
+// can make the modifier easier to use with this snippet
+extension View {
+    func title() -> some View {
+        modifier(Title())
+    }
+}
+
 struct ContentView: View {
     
     
@@ -29,6 +36,8 @@ struct ContentView: View {
                 .foregroundStyle(.tint)
             Text("hello")
                 .modifier(Title())
+            Text("john")
+                .title()
         } // vstack
         .padding()
     }
