@@ -18,7 +18,6 @@ struct Title: ViewModifier {
             .clipShape(.rect(cornerRadius: 10))
     }
 }
-
 // can make the modifier easier to use with this snippet
 extension View {
     func title() -> some View {
@@ -26,20 +25,53 @@ extension View {
     }
 }
 
+
+// a second custom modider
+struct Watermark: ViewModifier {
+    var text: String
+    
+    func body(content: Content) -> some View {
+        ZStack(alignment: .bottomTrailing) {
+            content
+            
+            Text(text)
+                .font(.caption)
+                .foregroundStyle(.white)
+                .padding(5)
+                .background(Color.blue.opacity(0.5))
+        } // stack
+    } // view
+}
+
+// The corresponding extension
+extension View {
+    public func watermark(with text: String) -> some View {
+        modifier(Watermark(text: text))
+    }
+}
+
+
 struct ContentView: View {
     
     
     var body: some View {
+        
         VStack {
             Image(systemName: "globe")
                 .imageScale(.large)
                 .foregroundStyle(.tint)
+            // This uses the custom modifier
             Text("hello")
                 .modifier(Title())
+            // This uses the extension to make it simpler
             Text("john")
                 .title()
         } // vstack
-        .padding()
+        
+        Color.blue
+            .frame(width: 100, height: 300)
+            // this uses the second extension
+            .watermark(with: "yo")
     }
 }
 
