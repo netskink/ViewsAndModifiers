@@ -7,6 +7,26 @@
 
 import SwiftUI
 
+struct GridStack<Content: View>: View {
+    
+    let rows: Int
+    let columns: Int
+    // a closure that takes two ints and returns a content view we can show
+    let content: (Int, Int) -> Content
+    
+    var body: some View {
+        VStack {
+            ForEach(0..<rows, id: \.self) { row in
+                HStack {
+                    ForEach(0..<columns, id: \.self) { column in
+                        content(row, column)
+                    }  // for each
+                }// hstack
+            } // foreach
+        } // vstack
+    } // view
+}  // gridstack generic view
+
 // A custom modifier
 struct Title: ViewModifier {
     func body(content: Content) -> some View {
@@ -30,6 +50,9 @@ extension View {
 // these have the benefit of
 // 1. easier to use
 // 2. can have properties such as text in this case
+//
+// lesson for this topic
+// https://www.hackingwithswift.com/books/ios-swiftui/custom-modifiers
 struct Watermark: ViewModifier {
     var text: String
     
@@ -75,7 +98,16 @@ struct ContentView: View {
             .frame(width: 100, height: 300)
             // this uses the second extension
             .watermark(with: "yo")
-    }
+
+        GridStack(rows: 3, columns: 4) { row, col in
+            Text("\(row),\(col)")
+                .title()
+        }
+
+
+    }  // view
+    
+    
 }
 
 #Preview {

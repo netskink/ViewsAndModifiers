@@ -9,3 +9,7 @@ Text("yo")
 ```
 
 If will draw a text box, some padding and then color the text and padding with background a background.
+
+# URLS
+
+* [custom view modifers](https://www.hackingwithswift.com/books/ios-swiftui/custom-modifiers)
