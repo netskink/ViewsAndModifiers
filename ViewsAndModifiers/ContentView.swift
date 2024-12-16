@@ -12,7 +12,7 @@ struct GridStack<Content: View>: View {
     let rows: Int
     let columns: Int
     // a closure that takes two ints and returns a content view we can show
-    let content: (Int, Int) -> Content
+    @ViewBuilder let content: (Int, Int) -> Content
     
     var body: some View {
         VStack {
@@ -118,11 +118,10 @@ struct ContentView: View {
             .watermark(with: "yo")
 
         GridStack(rows: 3, columns: 4) { row, col in
-            VStack {
+            // Note: using @ViewBuilder above gives a HStack
                 Image(systemName: "\(row * 4 + col).circle")
                 Text("R\(row),C\(col)")
                     .tiny()
-            }
         }
 
 
