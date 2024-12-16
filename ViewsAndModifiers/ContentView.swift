@@ -45,6 +45,24 @@ extension View {
     }
 }
 
+// A custom modifier
+struct Tiny: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .font(.footnote)
+            .foregroundStyle(.primary)
+            .padding()
+            .background(.blue)
+            .clipShape(.rect(cornerRadius: 10))
+    }
+}
+// can make the modifier easier to use with this snippet
+extension View {
+    func tiny() -> some View {
+        modifier(Tiny())
+    }
+}
+
 
 // a second custom modider
 // these have the benefit of
@@ -100,8 +118,11 @@ struct ContentView: View {
             .watermark(with: "yo")
 
         GridStack(rows: 3, columns: 4) { row, col in
-            Text("\(row),\(col)")
-                .title()
+            VStack {
+                Image(systemName: "\(row * 4 + col).circle")
+                Text("R\(row),C\(col)")
+                    .tiny()
+            }
         }
 
 
